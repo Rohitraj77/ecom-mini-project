@@ -21,7 +21,7 @@ urlpatterns = [
     path("dj-admin/", admin.site.urls),
     path("api/auth/", include("users.urls")),
     path("api/", include("products.urls")),
-    path("api/", include("orders.urls")),      # <-- add this
+    path("api/", include("orders.urls")),    
     path("", include("adminpanel.urls")),
 ]
 
