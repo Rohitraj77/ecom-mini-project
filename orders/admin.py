@@ -14,9 +14,7 @@ class OrderItemInline(admin.TabularInline):
     extra = 1  # one empty row by default
 
 def export_orders_csv(modeladmin, request, queryset):
-    """
-    Admin action: export selected orders as CSV.
-    """
+   
     response = HttpResponse(content_type="text/csv")
     response["Content-Disposition"] = "attachment; filename=orders.csv"
     writer = csv.writer(response)
@@ -35,7 +33,7 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline]
     actions = [export_orders_csv]  # <-- the new CSV action
 
-    # Recalculate total when items are edited inline
+   
     def save_formset(self, request, form, formset, change):
         instances = formset.save()
         order = form.instance
